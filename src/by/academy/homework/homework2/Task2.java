@@ -21,10 +21,10 @@ public class Task2 {
         String shortStr = array[0];
         int lengthShortStr = array[0].length();
         for (int i = 0; i < n; i++) {
-            String temp = "";
+            StringBuilder temp = new StringBuilder();
             for (int j = 0; j < array[i].length(); j++) {
-                if (temp.indexOf(array[i].charAt(j)) == -1) {
-                    temp += array[i].charAt(j);
+                if (temp.toString().indexOf(array[i].charAt(j)) == -1) {
+                    temp.append(array[i].charAt(j));
                 }
             }
             if (temp.length() < lengthShortStr) {
