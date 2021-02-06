@@ -10,6 +10,14 @@ public class Product {
         super();
     }
 
+    public double discount (){
+        if (quantity > 20){
+            return 0.9;
+        } else {
+            return 1;
+        }
+    }
+
     public String getName() {
         return name;
     }

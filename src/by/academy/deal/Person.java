@@ -1,10 +1,10 @@
 package by.academy.deal;
 
 public class Person {
-    String name;
-    String phone;
-    String email;
-    Double money;
+    private String name;
+    private String phone;
+    private String email;
+    private Double money;
 
     public Person() {
         super();

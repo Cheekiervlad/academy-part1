@@ -8,6 +8,15 @@ public class Cheese extends Product {
         super();
     }
 
+    @Override
+    public double discount (){
+        if (ageInDays > 20){
+            return 0.8;
+        } else {
+            return 1;
+        }
+    }
+
     void grows(int ageInDays) {
         this.ageInDays++;
     }
