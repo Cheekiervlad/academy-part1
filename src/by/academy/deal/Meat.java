@@ -10,7 +10,11 @@ public class Meat extends Product {
 
     @Override
     public double discount (){
-       return super.discount();
+        if (getQuantity() > 20){
+            return 0.9;
+        } else {
+            return 1;
+        }
     }
 
     public int getAge() {

@@ -1,6 +1,6 @@
 package by.academy.deal;
 
-public class Product {
+public abstract class Product {
     private String name;
     private Double price;
     private String manufacture;
@@ -10,13 +10,11 @@ public class Product {
         super();
     }
 
-    public double discount (){
-        if (quantity > 20){
-            return 0.9;
-        } else {
-            return 1;
-        }
+    public double calcFinalPrice(){
+       return quantity * price * discount();
     }
+
+    public abstract double discount ();
 
     public String getName() {
         return name;
