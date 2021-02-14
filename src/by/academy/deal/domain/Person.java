@@ -1,13 +1,16 @@
-package by.academy.deal;
+package by.academy.deal.domain;
 
 public class Person {
     private String name;
-    private String phone;
-    private String email;
     private Double money;
 
     public Person() {
         super();
+    }
+
+    public Person(String name, Double money) {
+        this.name = name;
+        this.money = money;
     }
 
     public String getName() {
@@ -16,22 +19,6 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public Double getMoney() {

@@ -1,4 +1,4 @@
-package by.academy.deal;
+package by.academy.deal.domain.products;
 
 public abstract class Product {
     private String name;
@@ -10,11 +10,18 @@ public abstract class Product {
         super();
     }
 
-    public double calcFinalPrice(){
-       return quantity * price * discount();
+    public Product(String name, Double price, String manufacture, Integer quantity) {
+        this.name = name;
+        this.price = price;
+        this.manufacture = manufacture;
+        this.quantity = quantity;
     }
 
-    public abstract double discount ();
+    public double calcFinalPrice() {
+        return quantity * price * discount();
+    }
+
+    public abstract double discount();
 
     public String getName() {
         return name;
@@ -46,5 +53,17 @@ public abstract class Product {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Product{");
+        sb.append("name='").append(name).append('\'');
+        sb.append(", price=").append(price);
+        sb.append(", manufacture='").append(manufacture).append('\'');
+        sb.append(", quantity=").append(quantity);
+        sb.append('}');
+        return sb.toString();
+
     }
 }
