@@ -19,6 +19,7 @@ public class Deal {
     public static final int MIN_LENGTH_ARRAY = 1;
     private static final LocalDate dealDate = LocalDate.now();
     private static final LocalDate deadlineDate = LocalDate.now().plusDays(10);
+    private final static Scanner sc = new Scanner(System.in);
     public static final String MENU_DEAL = """
             Меню сделки:
             Введите:
@@ -101,9 +102,7 @@ public class Deal {
     }
 
     public void menuDeal() {
-        Scanner sc = new Scanner(System.in);
         System.out.println(MENU_DEAL);
-
         String value = sc.nextLine();
         while (!value.equals("0")) {
             switch (value) {
@@ -156,7 +155,6 @@ public class Deal {
     }
 
     private void menuProducts() {
-        Scanner sc = new Scanner(System.in);
         System.out.println(MENU_PRODUCT);
         String value = sc.nextLine();
         while (!value.equals("0")) {
@@ -214,7 +212,6 @@ public class Deal {
     }
 
     private void readProduct(Product product) {
-        Scanner sc = new Scanner(System.in);
         System.out.println("Введите наименование продукта");
         product.setName(sc.nextLine());
 

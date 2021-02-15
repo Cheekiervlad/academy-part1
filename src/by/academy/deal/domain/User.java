@@ -21,6 +21,7 @@ public class User extends Person {
     private final static AmericanPhoneValidator apv = new AmericanPhoneValidator();
     private final static BelarusPhoneValidator bpv = new BelarusPhoneValidator();
     private final static EmailValidator ev = new EmailValidator();
+    private final static Scanner sc = new Scanner(System.in);
 
     public User() {
         super();
@@ -34,7 +35,6 @@ public class User extends Person {
     }
 
     public void readNewUser() throws ParseException {
-        Scanner sc = new Scanner(System.in);
         System.out.println("Введите ваше ФИО");
         setName(sc.nextLine());
 
