@@ -19,7 +19,6 @@ public class Deal {
     public static final int MIN_LENGTH_ARRAY = 1;
     private static final LocalDate dealDate = LocalDate.now();
     private static final LocalDate deadlineDate = LocalDate.now().plusDays(10);
-    private final static Scanner sc = new Scanner(System.in);
     public static final String MENU_DEAL = """
             Меню сделки:
             Введите:
@@ -101,13 +100,13 @@ public class Deal {
         }
     }
 
-    public void menuDeal() {
+    public void menuDeal(Scanner sc) {
         System.out.println(MENU_DEAL);
         String value = sc.nextLine();
         while (!value.equals("0")) {
             switch (value) {
                 case "1": {
-                    menuProducts();
+                    menuProducts(sc);
                     System.out.println("----------------------------");
                     System.out.println(MENU_DEAL);
                     break;
@@ -154,7 +153,7 @@ public class Deal {
         }
     }
 
-    private void menuProducts() {
+    private void menuProducts(Scanner sc) {
         System.out.println(MENU_PRODUCT);
         String value = sc.nextLine();
         while (!value.equals("0")) {
@@ -162,7 +161,8 @@ public class Deal {
                 case "1": {
                     System.out.println("Введите с новой строки значение следующих полей для мяса:");
                     Meat meat = new Meat();
-                    readProduct(meat);
+                    readProduct(meat, sc);
+                    sc.nextLine();
                     System.out.println("Введите наименование животного, используемового для мяса");
                     meat.setNameOfAnimal(sc.nextLine());
                     System.out.println("Введите вес порции мяса в гр.");
@@ -176,7 +176,8 @@ public class Deal {
                 case "2": {
                     System.out.println("Введите с новой строки значение следующих полей для вина:");
                     Wine wine = new Wine();
-                    readProduct(wine);
+                    readProduct(wine, sc);
+                    sc.nextLine();
                     System.out.println("Введите страну производителя");
                     wine.setCountry(sc.nextLine());
                     System.out.println("Введите выдержку вина в годах");
@@ -190,7 +191,7 @@ public class Deal {
                 case "3": {
                     System.out.println("Введите с новой строки значение следующих полей для сыра:");
                     Cheese cheese = new Cheese();
-                    readProduct(cheese);
+                    readProduct(cheese, sc);
                     System.out.println("Введите возраст сыра в днях");
                     cheese.setAgeInDays(sc.nextInt());
                     System.out.println("Введите вес порции сыра в гр.");
@@ -211,7 +212,7 @@ public class Deal {
         }
     }
 
-    private void readProduct(Product product) {
+    private void readProduct(Product product, Scanner sc) {
         System.out.println("Введите наименование продукта");
         product.setName(sc.nextLine());
 

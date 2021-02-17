@@ -33,13 +33,13 @@ public class ApplicationDemo {
                     Deal deal = new Deal();
                     System.out.println("Заполните данные о продавце");
                     User user1 = new User();
-                    user1.readNewUser();
+                    user1.readNewUser(sc);
                     System.out.println("Заполните данные о покупателе");
                     User user2 = new User();
-                    user2.readNewUser();
+                    user2.readNewUser(sc);
                     deal.setSeller(user1);
                     deal.setBuyer(user2);
-                    deal.menuDeal();
+                    deal.menuDeal(sc);
                     if (deal.getProducts() != null && deal.getProducts()[0] != null) {
                         addDeal(deal);
                         System.out.println("Сделка прошла успешно");
