@@ -2,6 +2,7 @@ package by.academy.deal.domain.products;
 
 import by.academy.deal.validator.Validator;
 
+@Producer(startYear = 1988, country = "Italy", founderFullName = "Kraev")
 public class Cheese extends Product {
     private int ageInDays;
     private double weight;

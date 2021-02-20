@@ -1,5 +1,6 @@
 package by.academy.deal.domain.products;
 
+@Producer(startYear = 1977, country = "Italy", founderFullName = "Green")
 public class Wine extends Product {
     private String country;
     private int age;

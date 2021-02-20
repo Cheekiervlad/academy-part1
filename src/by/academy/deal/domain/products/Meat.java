@@ -1,5 +1,6 @@
 package by.academy.deal.domain.products;
 
+@Producer(startYear = 1959, country = "Spain", founderFullName = "Buev")
 public class Meat extends Product {
     private String nameOfAnimal;
     private int weight;
