@@ -7,7 +7,7 @@ public class CustomIteratorDemo {
         Integer[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         Integer[] array1 = {};
         Integer[] array2 = {null, null, null};
-        ArrayIterator<Integer> arrIterator = new ArrayIterator<>(array2);
+        ArrayIterator<Integer> arrIterator = new ArrayIterator<>(array1);
 
         while (arrIterator.hasNext()){
             Integer i = arrIterator.next();
