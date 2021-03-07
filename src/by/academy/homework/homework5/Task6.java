@@ -5,8 +5,8 @@ import java.util.Random;
 public class Task6 {
 
     private static final Random random = new Random();
-    public static final int INITIAL_SIZE = 8;
-    public static final int AMOUNT_OF_ELEMENTS = 10;
+    private static final int INITIAL_SIZE = 8;
+    private static final int AMOUNT_OF_ELEMENTS = 10;
 
     public static void main(String[] args) {
         int[] array = new int[INITIAL_SIZE];
