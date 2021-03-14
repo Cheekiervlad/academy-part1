@@ -6,6 +6,10 @@ import by.academy.deal.domain.products.Meat;
 import by.academy.deal.domain.products.Product;
 import by.academy.deal.domain.products.Wine;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -19,6 +23,7 @@ public class Deal {
     public static final int MIN_LENGTH_ARRAY = 1;
     private static final LocalDate dealDate = LocalDate.now();
     private static final LocalDate deadlineDate = LocalDate.now().plusDays(10);
+    private static final String OUTPUT_FILE_PATH = "src\\by\\academy\\deal\\priceBill.txt";
     public static final String MENU_DEAL = """
             Меню сделки:
             Введите:
@@ -52,7 +57,7 @@ public class Deal {
                 if (product != null) {
                     price += product.getPrice() * product.discount() * product.getQuantity();
                     System.out.println(product.getName() + ", цена: " + product.getPrice() + "$, количество: "
-                            + product.getQuantity() + " шт., скидка: " + (int)((1 - product.discount()) * 100) + "%, итого: "
+                            + product.getQuantity() + " шт., скидка: " + (int) ((1 - product.discount()) * 100) + "%, итого: "
                             + product.getPrice() * product.discount() * product.getQuantity() + "$");
                 }
             }
@@ -62,6 +67,28 @@ public class Deal {
         }
         priceBill = price;
         return price;
+    }
+
+    private void priceBillTxt() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(OUTPUT_FILE_PATH, true))) {
+            File outputFile = new File(OUTPUT_FILE_PATH);
+            if (!outputFile.exists()) {
+                outputFile.createNewFile();
+            }
+
+            writer.newLine();
+            for (Product product : products) {
+                if (product != null) {
+                    writer.write(product.getName() + ", цена: " + product.getPrice() + "$, количество: "
+                            + product.getQuantity() + " шт., скидка: " + (int) ((1 - product.discount()) * 100) + "%, итого: "
+                            + product.getPrice() * product.discount() * product.getQuantity() + "$");
+                    writer.newLine();
+                }
+            }
+            writer.write("Общая сумма: " + priceBill + "$");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void addProduct(Product product) {
@@ -136,6 +163,7 @@ public class Deal {
                         System.out.println(MENU_DEAL);
                     } else {
                         if (buyer.getMoney() >= priceBill()) {
+                            priceBillTxt();
                             return;
                         } else {
                             System.out.println("Недостаточно средств у покупателя");
