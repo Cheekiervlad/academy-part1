@@ -26,26 +26,23 @@ public class Task4 {
         }
 
         Random random = new Random();
-        for (int i = 0; i < 100; i++) {
-            File file = new File(dir, (i + 1) + ".txt");
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-                if (!file.exists()) {
-                    file.createNewFile();
-                }
-                writer.write(sb.substring(0, random.nextInt(sb.length() + 1)));
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-
         File fileOutput = new File(OUTPUT_FILE_PATH);
-
         try (BufferedWriter writerResult = new BufferedWriter(new FileWriter(OUTPUT_FILE_PATH))) {
             if (!fileOutput.exists()) {
                 fileOutput.createNewFile();
             }
 
-            for (File file : dir.listFiles()) {
+            for (int i = 0; i < 100; i++) {
+                File file = new File(dir, (i + 1) + ".txt");
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+                    if (!file.exists()) {
+                        file.createNewFile();
+                    }
+                    writer.write(sb.substring(0, random.nextInt(sb.length() + 1)));
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
+
                 writerResult.write(file.getName() + ", размер " + file.length() + " байт");
                 writerResult.newLine();
             }

@@ -31,9 +31,6 @@ public class Task3 {
             File userFile = new File(dir, userFileName);
 
             try (ObjectOutputStream output = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(userFile)))) {
-                if (!userFile.exists()) {
-                    userFile.createNewFile();
-                }
                 output.writeObject(user);
             } catch (IOException e) {
                 System.err.println(e.getMessage());
